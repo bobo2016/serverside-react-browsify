@@ -1,3 +1,6 @@
 # serverside-react-browsify
 
-node project for server side react
+###
+Run Project
+
+`npm run watch`
