@@ -27,9 +27,12 @@ var LeftMenu =  React.createClass({
 	render: function(){
 		return (
 
+			//comment
 			/*<a href="#menu" className="menu-link">
 			        <span></span>
 			    </a>*/
+
+
 			<div className="pure-menu custom-restricted-width">
 			    <span className="pure-menu-heading">Dashboard</span>
 
