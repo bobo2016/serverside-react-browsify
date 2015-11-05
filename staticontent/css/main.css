@@ -58,10 +58,11 @@ The content `<div>` is where all your content goes.
 }
 
 .header {
+	background-color: green;
      margin: 0;
      color: #333;
      text-align: center;
-     padding: 2.5em 2em 0;
+     padding: 0 2em;
      border-bottom: 1px solid #eee;
  }
     .header h1 {
@@ -211,7 +212,57 @@ small screens.
             margin-top: 0.6em;
         }
 
+/* -- Customize------------------------------------- */
+.header{
+	padding: 10px 5px 0;
+}
+.header,.grid-ctnr{
+	margin-left: 20%;
+}
 
+.topHeader{
+	background: #FFCE43;
+}
+
+.topHeader .pure-menu-list{
+	float: right;
+}
+
+.left-menu{
+	position: absolute;
+    width: 20%;
+    background-color: red;
+    height: 1000px;
+    padding: 20px 0;
+}
+
+.header h1{
+	margin: 0;
+}
+
+.pure-g >div:hover{
+	cursor: pointer;
+	background: #fff none repeat scroll 0 0;
+    box-shadow: 0 10px 8px -1px #c5c5c5;
+}
+
+.pure-g >div{
+	margin-bottom: 10px;
+}
+
+.staff-summary h2{
+	margin-top: 10px;
+	margin:10px;
+}
+
+.staff-summary span{
+	display: block;
+	margin:10px;
+}
+
+.staff-summary .desc,.thumbnail-img{
+	float: left;
+}
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
 /*

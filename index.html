@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>React + Browerify Demo</title>
+	<title>React Demo</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<!--[if lte IE 8]>
@@ -12,6 +12,13 @@
 	<!--<![endif]-->
 	<link rel="stylesheet" href="staticontent/css/main.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+	<script type="text/javascript">
+		if (typeof window !== 'undefined') {
+		    window.React = React;
+		}
+	</script>
 </head>
 <body>
 	<div id="react-demo"></div>
