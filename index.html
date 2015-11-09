@@ -14,6 +14,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdn.jsdelivr.net/react/0.13.3/react-with-addons.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/0.13.3/ReactRouter.min.js"></script>
 	<script type="text/javascript">
 		if (typeof window !== 'undefined') {
 		    window.React = React;
@@ -22,7 +24,111 @@
 </head>
 <body>
 	<div id="react-demo"></div>
+	<div id="react-demo2"></div>
 	<script src="bundle.js"></script>
 	<script src="staticontent/js/main.js"></script>
+
+	<script type="text/jsx">
+		var Router = ReactRouter; 
+		var Route = ReactRouter.Route; 
+		var RouteHandler = ReactRouter.RouteHandler;
+		var Link = ReactRouter.Link;
+		var StateMixin = ReactRouter.State;
+
+
+		var Books = React.createClass({
+		  render: function() {
+		    return (
+		      <ul>
+		        <li key={1}><Link to="book" params={{id: 1}}>Live link</Link></li>
+		        <li key={2}><Link to="book" params={{id: 2}}>Harry potter</Link></li>
+		        <li key={3}><Link to="book" params={{id: 3}}>mission impossible</Link></li>
+		        <RouteHandler />
+		      </ul>
+		    );
+		  }
+		});
+
+
+		var Book = React.createClass({
+		  mixins: [StateMixin],
+		  
+		  render: function() {
+		    return (
+		      <article>
+		       <h1>this book id {this.getParams()['id']} s description</h1>
+		      </article>
+		    );
+		  }
+		});
+
+		/**
+		 * 电影列表组件
+		 */
+		var Movies = React.createClass({
+		  render: function() {
+		    return (
+		      <ul>
+		        <li key={1}><Link to="movie" params={{id: 1}}>Movie1</Link></li>
+		        <li key={2}><Link to="movie" params={{id: 2}}>Movie2</Link></li>
+		        <li key={3}><Link to="movie" params={{id: 3}}>Movie3</Link></li>
+		      </ul>
+		    );
+		  }
+		});
+
+		/**
+		 * 单部电影组件
+		 */
+		var Movie = React.createClass({
+		  mixins: [StateMixin],
+		  
+		  render: function() {
+		    return (
+		      <article>
+		       <h1>this movie id {this.getParams().id} description details</h1>
+		      </article>
+		    );
+		  }
+		});
+
+
+
+
+
+		var App = React.createClass({
+		  render: function() {
+		    return (
+		      <div className="app">
+		        <nav>
+		          <a href="#"><Link to="movies">Movie</Link></a>
+		          <a href="#"><Link to="books">Book</Link></a>
+		        </nav>
+		        <section>
+		          <RouteHandler />
+		        </section>
+		      </div>
+		    );
+		  }
+		});
+
+
+
+		var routes = (
+		  <Route handler={App}>
+		    <Route name="movies" handler={Movies} />
+		    <Route name="movie" path="/movie/:id" handler={Movie} />
+		    <Route name="books" handler={Books} />
+		    <Route name="book" path="/book/:id" handler={Book} />
+		  </Route>
+		);
+
+
+		var reactDemo2 =  document.getElementById("react-demo2");
+		Router.run(routes, Router.HashLocation, function(Root){
+		  React.render(<Root />, reactDemo2);
+		});
+
+	</script>
 </body>
 </html>

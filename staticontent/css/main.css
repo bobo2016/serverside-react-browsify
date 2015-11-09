@@ -263,6 +263,10 @@ small screens.
 .staff-summary .desc,.thumbnail-img{
 	float: left;
 }
+
+.staff-summary .name{
+	text-transform: uppercase;
+}
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
 /*

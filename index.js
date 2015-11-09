@@ -1,8 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Router = require('react-router').Router
-var Route = require('react-router').Route
-var Link = require('react-router').Link
+var Routes = require('react-router').Routes;
+var Route = require('react-router').Route;
+var Link = require('react-router').Link;
+var StateMixin = require('react-router').State;
 
 var HelloWorld = React.createClass({
 	getInitialState : function(){
@@ -92,92 +93,96 @@ var Header = React.createClass({
 var Grid = React.createClass({
 	getInitialState: function(){
 		return{
-			name: "Charles"
+			name: "Charles Jingbo Zhang",
+			title: "Web Developer",
+			duty: "Build awesome website"
 		}
 	},
 
 	render: function(){
-		var name =  this.state.name;
+		var name =  this.state.name,
+			title = this.state.title,
+			duty = this.state.duty;
 		return (
 			<div className="pure-g staff-summary">
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			    <div className="pure-u-1 pure-u-md-1-3">
 			    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
 			    	<div className="desc">
-			    		<h2>Name: Charles</h2>
-			    		<span className="title">Title:</span>
-			    		<span className="duty">Duty:</span>
+			    		<h2>Name: {name}</h2>
+			    		<span className="title">Title: {title}</span>
+			    		<span className="duty">Duty: {duty}</span>
 			    	</div>
 			    </div>
 			</div>
@@ -193,39 +198,79 @@ var GridContainer =  React.createClass({
 			</div>
 		)
 	}
-})
-/*var Menu = React.createClass({
-	render:function(){
-		return(
-			    <a href="#menu" className="menu-link">
-			        <span></span>
-			    </a>
+});
 
-			    <div className="menu">
-			        <div className="pure-menu">
-			            <a className="pure-menu-heading" href="#">Company</a>
 
-			            <ul className="pure-menu-list">
-			                <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
-			                <li className="pure-menu-item"><a href="#" className="pure-menu-link">About</a></li>
+/*var routes = (
+	<Routes location = "hash">
+		<Route path="/" handler = {App}>
+			<Route path="books" name="bookList" handler={Books}/>
+			<Route path="movies" name="movieList" handler={Movies}/>
+		</Route>
+	</Routes>
 
-			                <li className="pure-menu-item" className="menu-item-divided pure-menu-selected">
-			                    <a href="#" className="pure-menu-link">Services</a>
-			                </li>
+)
 
-			                <li className="pure-menu-item"><a href="#" className="pure-menu-link">Contact</a></li>
-			            </ul>
-			        </div>
-			    </div>
+var App = React.createClass({
+	render: function(){
+		return (
+			<div className = "main">
+				<nav>
+					<Link to="bookList">Books</Link>
+					<Link to="movieList">Movies</Link>
+				</nav>
+				<section>
+					<RouteHandler>
+				</section>
+			</div>
 		)
 	}
+});
+
+var Books = React.createClass({
+	render: function(){
+		return (
+			<div>	
+				<ul>
+					<li>Live</li>
+					<li>Harry potter</li>
+					<li>Audacity of Hope</li>
+				</ul>
+				<RouteHandler/>
+			</div>
+		)
+	}
+});
+
+var Movies =  React.createClass({
+	render: function(){
+		return (
+			<div>
+				<ul>
+					<li>Movie1</li>
+					<li>Movie2</li>
+					<li>Movie3</li>
+				</ul>
+				<RouteHandler/>
+			</div>
+		)
+	}
+});
+
+var Movie =  React.createClass({
+	mixins: [StateMixin],
+
+	render: function(){
+		return(
+			<article>
+				<h1>movie description</h1>
+			</article>
+		)
+	}
+
 })
 */
 
-
-
-
-
 ReactDOM.render(<Dashboard></Dashboard>, document.getElementById('react-demo'));
-
+//React.renderComponent(routes, document.body);
 
