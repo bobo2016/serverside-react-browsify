@@ -25,6 +25,7 @@
 <body>
 	<div id="react-demo">
 		<div id="main-content"></div>
+		<div id="sub-content"></div>
 		<div id="left-nav"></div>
 	</div>
 	<div id="react-demo2"></div>
@@ -72,7 +73,18 @@
 		        <li key={1}><Link to="movie" params={{id: 1}}>Movie1</Link></li>
 		        <li key={2}><Link to="movie" params={{id: 2}}>Movie2</Link></li>
 		        <li key={3}><Link to="movie" params={{id: 3}}>Movie3</Link></li>
+		        <h1>Awesome h1</h1>
 		      </ul>
+		    );
+		  }
+		});
+
+		var Sum = React.createClass({
+		  render: function() {
+		    return (
+		     	<div>
+		     		 <h1>Awesome Sum</h1>
+		     	</div>
 		    );
 		  }
 		});
@@ -84,14 +96,11 @@
 		  render: function() {
 		    return (
 		      <article>
-		       <h1>this movie id {this.getParams().id} description details</h1>
+		       	<h1>this movie id {this.getParams().id} description details</h1>
 		      </article>
 		    );
 		  }
 		});
-
-
-
 
 
 		var App = React.createClass({
@@ -102,15 +111,10 @@
 		          <a href="#"><Link to="movies">Movie</Link></a>
 		          <a href="#"><Link to="books">Book</Link></a>
 		        </nav>
-		        <section>
-		          <RouteHandler />
-		        </section>
 		      </div>
 		    );
 		  }
-		});
-
-
+		})
 
 		var routes = (
 		  <Route handler={App}>
@@ -119,7 +123,7 @@
 		    <Route name="books" handler={Books} />
 		    <Route name="book" path="/book/:id" handler={Book} />
 		  </Route>
-		);
+		)
 
 		var LeftMenu =  React.createClass({
 			render: function(){
@@ -130,24 +134,58 @@
 					    <ul className="pure-menu-list">
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Daily Duty</a></li>
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Project Process</a></li>
-					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Vacation Summary</a></li>
+					        <li className="pure-menu-item"><Link to="summary" className="pure-menu-link">Vacation Summary</Link></li>
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Other</a></li>
 					    </ul>
+					   <SummaryCtnr/>
 					</div>
 				)
 			}
 		})
 
+		var navRoutes = (
+			<Route handler = {LeftMenu}>
+				<Route name = "summary" handler={Sum}/>
+			</Route>
+		)
 
+
+		var SummaryCtnr = React.createClass({
+			render:function(){
+				return(
+					 <section>
+				          <RouteHandler />
+				     </section>
+				)
+			}
+		})
+
+
+		/*var Sum =  React.createClass({
+			render: function(){
+				return(
+					<div className="sum"> 
+					  <h1>Summary</h1>
+					</div>
+				)
+			}
+		})
+*/
 
 		var reactDemo2 =  document.getElementById("react-demo2"),
-			leftNav = document.getElementById("left-nav");
-
+			leftNav = document.getElementById("left-nav"),
+			content = document.getElementById("main-content"),
+			subContent = document.getElementById("sub-content");
+/*
 		Router.run(routes, Router.HashLocation, function(Root){
 		  React.render(<Root />, reactDemo2);
+		});*/
+
+		Router.run(navRoutes, Router.HashLocation, function(Root){
+		  React.render(<Root />, leftNav);
 		});
 
-		React.render(<LeftMenu />, leftNav);
+		//React.render(<LeftMenu />, leftNav);
 
 
 	</script>
