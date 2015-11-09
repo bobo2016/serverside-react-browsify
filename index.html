@@ -23,7 +23,10 @@
 	</script>
 </head>
 <body>
-	<div id="react-demo"></div>
+	<div id="react-demo">
+		<div id="main-content"></div>
+		<div id="left-nav"></div>
+	</div>
 	<div id="react-demo2"></div>
 	<script src="bundle.js"></script>
 	<script src="staticontent/js/main.js"></script>
@@ -34,7 +37,6 @@
 		var RouteHandler = ReactRouter.RouteHandler;
 		var Link = ReactRouter.Link;
 		var StateMixin = ReactRouter.State;
-
 
 		var Books = React.createClass({
 		  render: function() {
@@ -62,9 +64,7 @@
 		  }
 		});
 
-		/**
-		 * 电影列表组件
-		 */
+
 		var Movies = React.createClass({
 		  render: function() {
 		    return (
@@ -77,9 +77,7 @@
 		  }
 		});
 
-		/**
-		 * 单部电影组件
-		 */
+
 		var Movie = React.createClass({
 		  mixins: [StateMixin],
 		  
@@ -123,11 +121,34 @@
 		  </Route>
 		);
 
+		var LeftMenu =  React.createClass({
+			render: function(){
+				return (
+					<div className="left-menu pure-menu custom-restricted-width">
+					    <span className="pure-menu-heading">Summary</span>
 
-		var reactDemo2 =  document.getElementById("react-demo2");
+					    <ul className="pure-menu-list">
+					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Daily Duty</a></li>
+					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Project Process</a></li>
+					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Vacation Summary</a></li>
+					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Other</a></li>
+					    </ul>
+					</div>
+				)
+			}
+		})
+
+
+
+		var reactDemo2 =  document.getElementById("react-demo2"),
+			leftNav = document.getElementById("left-nav");
+
 		Router.run(routes, Router.HashLocation, function(Root){
 		  React.render(<Root />, reactDemo2);
 		});
+
+		React.render(<LeftMenu />, leftNav);
+
 
 	</script>
 </body>

@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Router = require('react-router');
 var Routes = require('react-router').Routes;
 var Route = require('react-router').Route;
 var Link = require('react-router').Link;
@@ -25,7 +26,6 @@ var Dashboard = React.createClass({
 			<div className = "dashboard">
 				<TopHeader/>
 				<MenuButton/>
-				<LeftMenu/>
 				<Header/>
 				<GridContainer/>
 			</div>
@@ -93,7 +93,7 @@ var Header = React.createClass({
 var Grid = React.createClass({
 	getInitialState: function(){
 		return{
-			name: "Charles Jingbo Zhang",
+			name: "Charles Zhang",
 			title: "Web Developer",
 			duty: "Build awesome website"
 		}
@@ -271,6 +271,8 @@ var Movie =  React.createClass({
 })
 */
 
-ReactDOM.render(<Dashboard></Dashboard>, document.getElementById('react-demo'));
+ReactDOM.render(<Dashboard></Dashboard>, document.getElementById('main-content'));
 //React.renderComponent(routes, document.body);
+
+
 

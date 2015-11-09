@@ -232,8 +232,10 @@ small screens.
 	position: absolute;
     width: 20%;
     background-color: red;
+    opacity: 0.8;
     height: 1000px;
     padding: 20px 0;
+    top: 50px;
 }
 
 .header h1{
