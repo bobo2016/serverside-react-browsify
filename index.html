@@ -320,13 +320,30 @@
 			}
 		});
 
-		var Search = React.createClass({
+		var SearchInput = React.createClass({
+			//this.refs.myInput.getDOMNode()
+			propTypes:{
+				id: React.PropTypes.string,
+				name: React.PropTypes.string.isRequired,
+				label: React.PropTypes.string,
+				value: React.PropTypes.string.isRequired,
+				checked: React.PropTypes.bool
+			},
+
+			getDefaultProps: function(){
+				return {
+					id: null,
+					value: "Please enter name...",
+					name: "search"
+				};
+			},
+
 			render: function(){
 				return (
 					<div className= "search">
 						<form className = "pure-form">
 							<fieldset>
-								<input ref="input" placehold="please enter name..." type="text" name="search"/>
+								<input ref="input" type="text" name={this.props.name} value={this.props.value} id={this.props.id}/>
 								<button type="submit" className="pure-button pure-button-primary">Search</button>
 							</fieldset>
 						</form>
@@ -339,7 +356,7 @@
 			render: function(){
 				return (
 					<div className="grid-ctnr">
-						<Search/>
+						<SearchInput/>
 						<Grid/>
 						<Charts/>
 					</div>
@@ -359,6 +376,10 @@
 			}
 		});
 
+		var styles = {
+			"background-color":"red"
+		}
+
 		var reactDemo2 =  document.getElementById("react-demo2"),
 			leftNav = document.getElementById("left-nav"),
 			content = document.getElementById("main-content"),
@@ -373,7 +394,7 @@
 		});*/
 
 		//React.render(<LeftMenu />, leftNav);
-		React.render(<Dashboard></Dashboard>, content);
+		React.render(<Dashboard style={styles}></Dashboard>, content);
 
 	</script>
 </body>
