@@ -25,8 +25,6 @@
 <body>
 	<div id="react-demo">
 		<div id="main-content"></div>
-		<div id="sub-content"></div>
-		<div id="left-nav"></div>
 	</div>
 	<div id="react-demo2"></div>
 	<script src="bundle.js"></script>
@@ -39,6 +37,10 @@
 		var Link = ReactRouter.Link;
 		var StateMixin = ReactRouter.State;
 
+
+
+		
+
 		var Books = React.createClass({
 		  render: function() {
 		    return (
@@ -46,7 +48,6 @@
 		        <li key={1}><Link to="book" params={{id: 1}}>Live link</Link></li>
 		        <li key={2}><Link to="book" params={{id: 2}}>Harry potter</Link></li>
 		        <li key={3}><Link to="book" params={{id: 3}}>mission impossible</Link></li>
-		        <RouteHandler />
 		      </ul>
 		    );
 		  }
@@ -125,6 +126,20 @@
 		  </Route>
 		)
 
+		var Dashboard = React.createClass({
+			render:function(){
+				return (
+					<div className = "dashboard">
+						<TopHeader/>
+						<MenuButton/>
+						<LeftMenu/>
+						<Header/>
+						<GridContainer/>
+					</div>
+				)
+			}
+		});
+
 		var LeftMenu =  React.createClass({
 			render: function(){
 				return (
@@ -134,10 +149,10 @@
 					    <ul className="pure-menu-list">
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Daily Duty</a></li>
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Project Process</a></li>
-					        <li className="pure-menu-item"><Link to="summary" className="pure-menu-link">Vacation Summary</Link></li>
+					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Vacation Summary</a></li>
 					        <li className="pure-menu-item"><a href="#" className="pure-menu-link">Other</a></li>
+					     
 					    </ul>
-					   <SummaryCtnr/>
 					</div>
 				)
 			}
@@ -161,16 +176,188 @@
 		})
 
 
-		/*var Sum =  React.createClass({
+
+		var MenuButton = React.createClass({
 			render: function(){
-				return(
-					<div className="sum"> 
-					  <h1>Summary</h1>
+				return (
+					<div>
+						<a href="#menu" className="menu-link">
+					        <span></span>
+					    </a>
 					</div>
 				)
 			}
 		})
-*/
+
+		var TopHeader = React.createClass({
+			render: function(){
+				return (
+					<div className="topHeader pure-menu pure-menu-horizontal pure-menu-scrollable">
+						<a href="#" className="pure-menu-link pure-menu-heading">Dashboard</a>
+				        <ul className="pure-menu-list">
+				            <li className="pure-menu-item pure-menu-selected"><a href="#" className="pure-menu-link">Home</a></li>
+				            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Tour</a></li>
+				            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Sign Up</a></li>
+				        </ul>
+					</div>
+				)
+			}
+		})
+
+		var Header = React.createClass({
+			render: function(){
+				return(
+					<div className="header">
+			            <h1>DEPARTMENT STAFF</h1>
+			            <h2>IT Dpartment</h2>
+			        </div>
+				)
+			}
+		})
+
+
+		var Grid = React.createClass({
+			handleClick: function(){
+				alert("Hello Jingbo");
+			},
+
+			getInitialState: function(){
+				return{
+					name: "Charles Zhang",
+					title: "Web Developer",
+					duty: "Build awesome website"
+				}
+			},
+
+			render: function(){
+				var name =  this.state.name,
+					title = this.state.title,
+					duty = this.state.duty;
+				return (
+					<div className="pure-g staff-summary">
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc" onClick={this.handleClick}>
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					    <div className="pure-u-1 pure-u-md-1-3">
+					    	<img className="thumbnail-img" src="http://placehold.it/200x200" alt="thumbnail img"></img>
+					    	<div className="desc">
+					    		<h2>Name: {name}</h2>
+					    		<span className="title">Title: {title}</span>
+					    		<span className="duty">Duty: {duty}</span>
+					    	</div>
+					    </div>
+					</div>
+				)
+			}
+		});
+
+		var Search = React.createClass({
+			render: function(){
+				return (
+					<div className= "search">
+						<form className = "pure-form">
+							<fieldset>
+								<input ref="input" placehold="please enter name..." type="text" name="search"/>
+								<button type="submit" className="pure-button pure-button-primary">Search</button>
+							</fieldset>
+						</form>
+					</div>
+				)
+			}
+		});
+
+		var GridContainer =  React.createClass({
+			render: function(){
+				return (
+					<div className="grid-ctnr">
+						<Search/>
+						<Grid/>
+						<Charts/>
+					</div>
+				)
+			}
+		});
+
+		
+
+		var Charts  = React.createClass({
+			render:function(){
+				return (
+					<div className="chartCtnr">
+						charts
+					</div>
+				)
+			}
+		});
 
 		var reactDemo2 =  document.getElementById("react-demo2"),
 			leftNav = document.getElementById("left-nav"),
@@ -181,12 +368,12 @@
 		  React.render(<Root />, reactDemo2);
 		});*/
 
-		Router.run(navRoutes, Router.HashLocation, function(Root){
-		  React.render(<Root />, leftNav);
-		});
+		/*Router.run(navRoutes, Router.HashLocation, function(Root){
+		  React.render(<Root></Root>, content);
+		});*/
 
 		//React.render(<LeftMenu />, leftNav);
-
+		React.render(<Dashboard></Dashboard>, content);
 
 	</script>
 </body>

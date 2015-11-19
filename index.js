@@ -20,7 +20,7 @@ var HelloWorld = React.createClass({
 	}
 })
 
-var Dashboard = React.createClass({
+/*var Dashboard = React.createClass({
 	render:function(){
 		return (
 			<div className = "dashboard">
@@ -200,7 +200,7 @@ var GridContainer =  React.createClass({
 	}
 });
 
-
+*/
 /*var routes = (
 	<Routes location = "hash">
 		<Route path="/" handler = {App}>
@@ -271,7 +271,7 @@ var Movie =  React.createClass({
 })
 */
 
-ReactDOM.render(<Dashboard></Dashboard>, document.getElementById('main-content'));
+//ReactDOM.render(<Dashboard></Dashboard>, document.getElementById('main-content'));
 //React.renderComponent(routes, document.body);
 
 
