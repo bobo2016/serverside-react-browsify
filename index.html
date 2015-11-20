@@ -338,12 +338,29 @@
 				};
 			},
 
+			getInitialState:function(){
+				return {
+					value: "Please enter employee name: " 
+				}
+			},
+
+			handleChange:function(event){
+				this.setState({value: event.target.value});
+			},
+
+
+			componentDidMount:function(){
+				var inputNode = this.refs.input.getDOMNode();
+				console.log(inputNode);
+			},
+
 			render: function(){
+				var value = this.state.value;
 				return (
 					<div className= "search">
 						<form className = "pure-form">
 							<fieldset>
-								<input ref="input" type="text" name={this.props.name} value={this.props.value} id={this.props.id}/>
+								<input ref="input" type="text" name={this.props.name} value={value} id={this.props.id} onChange={this.handleChange}/>
 								<button type="submit" className="pure-button pure-button-primary">Search</button>
 							</fieldset>
 						</form>
