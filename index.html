@@ -345,26 +345,124 @@
 			},
 
 			handleChange:function(event){
-				this.setState({value: event.target.value});
+				var inputVal =  event.target.value;
+				inputVal = textLimit(inputVal,30);
+				this.setState({
+					value: inputVal
+				});
+				
+				function textLimit(val, maxChar){
+					if(val.length>=maxChar){
+						return val.substr(0,maxChar);
+					}
+				}
 			},
-
 
 			componentDidMount:function(){
 				var inputNode = this.refs.input.getDOMNode();
 				console.log(inputNode);
 			},
 
+			submitHandler: function(event){
+				event.preventDefault();
+				//access the input by it's ref
+				var inputNodeValue = this.refs.input.getDOMNode().value;
+				this.refs.input.getDOMNode().value = "";
+				alert(inputNodeValue);
+			},
+
 			render: function(){
 				var value = this.state.value;
 				return (
 					<div className= "search">
-						<form className = "pure-form">
-							<fieldset>
-								<input ref="input" type="text" name={this.props.name} value={value} id={this.props.id} onChange={this.handleChange}/>
-								<button type="submit" className="pure-button pure-button-primary">Search</button>
+						<form className = "pure-form" onSubmit={this.submitHandler}>
+							<fieldset>	
+								<input ref="input" type="text" name={this.props.name} value={value} id={this.props.id} onChange={this.handleChange} autoFocus="true"/>
+								<button type="submit" className="pure-button pure-button-primary">Search</button>						
 							</fieldset>
 						</form>
+
+						<DeptSelect/>
+						<DeptCheckbox/>
+						
 					</div>
+				)
+			}
+		});
+
+		var DeptSelect = React.createClass({
+			getInitialState: function(){
+				return {
+					options: ["B"]
+				}
+			},
+
+			handleChange: function(event){
+				var checked =[];
+				var sel = event.target;
+				for(var i=0;i< sel.length;i++){
+					var option = sel.options[i];
+					if(option.selected){
+						checked.push(option.value);
+					}
+				}
+
+				this.setState({
+					options: checked
+				})
+			},
+
+			submitHandler: function(event){
+				event.preventDefault();
+				alert(this.state.options);
+			},
+
+			render: function(){
+				return(
+					<form className = "pure-form" onSubmit={this.submitHandler}>
+						<fieldset>	
+							<select value="select" onChange = {this.handleChange}>
+								<option value="A">IT</option>
+								<option value="B">E-commerce</option>
+								<option value="C">Finance</option>
+							</select>
+							<button type="submit" className="pure-button pure-button-primary">Filter</button>
+						</fieldset>
+						
+					</form>
+				)	
+			}
+		});	
+
+
+		var DeptCheckbox = React.createClass({
+			getInitialState: function(){
+				return{
+					checked: true
+				};
+			},
+
+			handleChange: function(event){
+				this.setState({
+					checked: event.target.checked
+				})
+			},	
+
+			submitHandler:function(event){
+				event.preventDefault();
+				alert(this.state.checked);
+			},
+
+			render: function(){
+				return (
+					<form className = "pure-form" onSubmit={this.submitHandler}>
+						<fieldset>	
+							<label for="remember" className="pure-checkbox">
+					            <input id="remember" type="checkbox" value="A" checked={this.state.checked} onChange={this.handleChange}/> Remember me
+					        </label>
+					        <button type="submit" className="pure-button pure-button-primary">Filter</button>
+						</fieldset>				
+					</form>
 				)
 			}
 		});
